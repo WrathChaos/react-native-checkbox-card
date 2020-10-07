@@ -5,6 +5,7 @@ import RNBounceable from "@freakycoder/react-native-bounceable";
  * ? Local Imports
  */
 import styles from "./RNCheckboxCard.style.ts";
+import { ThemeColors, DARK, LIGHT } from "./theme";
 
 const { width: ScreenWidth } = Dimensions.get("window");
 
@@ -17,15 +18,17 @@ export interface ISource {
 
 export interface ICheckboxCardProps {
   isChecked?: boolean;
-  rightIconComponent?: React.ReactElement;
-  checkIconComponent?: React.ReactElement;
+  darkMode?: boolean;
+  ImageComponent?: any;
   checkImageSource?: ISource;
   sortIconImageSource?: ISource;
-  ImageComponent?: any;
+  rightIconComponent?: React.ReactElement;
+  checkIconComponent?: React.ReactElement;
   onPress: (checked: boolean) => void;
 }
 
 interface IState {
+  theme: string;
   checked: boolean;
 }
 
@@ -36,6 +39,7 @@ export default class RNCheckboxCard extends Component<
   constructor(props: ICheckboxCardProps) {
     super(props);
     this.state = {
+      theme: props.darkMode ? DARK : LIGHT,
       checked: props.isChecked || false,
     };
   }
