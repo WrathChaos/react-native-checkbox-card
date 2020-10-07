@@ -126,7 +126,7 @@ export default class RNCheckboxCard extends React.Component<
       enableQuantityText = false,
     } = this.props;
     return (
-      <View>
+      <View style={styles.textContainer}>
         <Text
           numberOfLines={2}
           style={[

@@ -10,7 +10,11 @@
 
 <p align="center">
   <img alt="React Native Checkbox Card"
-        src="assets/Screenshots/typescript.jpg" />
+        src="assets/Screenshots/RN-Checkbox-Card.gif" />
+  <img alt="React Native Checkbox Card"
+        src="assets/Screenshots/RN-Checkbox-Card-2.gif" />
+  <img alt="React Native Checkbox Card"
+        src="assets/Screenshots/RN-Checkbox-Card-Light.gif" />
 </p>
 
 # Installation

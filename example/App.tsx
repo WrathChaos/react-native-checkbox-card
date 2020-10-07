@@ -1,40 +1,95 @@
 import React from "react";
-import { FlatList, StatusBar, SafeAreaView } from "react-native";
-
-import RNCheckboxCard from "./build/dist/RNCheckboxCard";
+import { View, Text, FlatList, StatusBar, SafeAreaView } from "react-native";
+import RNCheckboxCard from "react-native-checkbox-card";
 
 const staticData = [
   {
     id: 1,
     text: "Banana",
+    quantity: "(2)",
+  },
+  {
+    id: 2,
+    text: "Apple",
+    quantity: "(3)",
+  },
+  {
+    id: 3,
+    text: "Red wine",
+    quantity: "x1",
+  },
+  {
+    id: 4,
+    text: "Egg",
+    quantity: "x12",
+  },
+  {
+    id: 5,
+    text: "Flour",
+    quantity: "1 pack",
+  },
+
+  {
+    id: 6,
+    text: "Butter",
+    quantity: "1 whole",
+  },
+  {
+    id: 7,
+    text: "Brown rise",
+    quantity: "2 kg",
+  },
+  {
+    id: 8,
+    text: "Tomato sauce",
+    quantity: "x2",
   },
 ];
 
 const App = () => {
   const renderItem = (data: any) => {
-    const { text, id } = data.item;
+    const { text, quantity, id } = data.item;
 
     return (
-      <RNCheckboxCard
-        darkMode
-        text={text}
-        onPress={(checked: boolean) => console.log("Checked: ", checked)}
-      />
+      <View style={{ marginTop: 16 }}>
+        <RNCheckboxCard
+          // darkMode
+          text={text}
+          // quantity={quantity}
+          // enableQuantityText
+          onPress={(checked: boolean) => console.log("Checked: ", checked)}
+        />
+      </View>
     );
   };
 
+  const renderHeader = () => (
+    <View style={{ marginLeft: 24 }}>
+      <Text style={{ fontSize: 32, color: "#1b1b1b", fontWeight: "600" }}>
+        Shopping List
+      </Text>
+      <Text style={{ color: "#818181", fontSize: 16 }}>
+        Your daily shopping list
+      </Text>
+    </View>
+  );
+
   return (
     <>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" />
       <SafeAreaView
         style={{
           flex: 1,
-          alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#19191a",
+          backgroundColor: "#edf0f1",
         }}
       >
-        <FlatList data={staticData} renderItem={renderItem} />
+        {renderHeader()}
+        <FlatList
+          data={staticData}
+          style={{ marginTop: 24 }}
+          renderItem={renderItem}
+        />
       </SafeAreaView>
     </>
   );

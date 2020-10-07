@@ -10,6 +10,7 @@ const { width: ScreenWidth } = Dimensions.get("window");
 interface Style {
   container: ViewStyle;
   rightIconContainer: ViewStyle;
+  textContainer: TextStyle;
   sortIconImageStyle: ImageStyle;
   quantityTextStyle: TextStyle;
   checkIconImageStyle: ImageStyle;
@@ -36,7 +37,6 @@ export const _textStyle = (
   checkedTextColor: string,
   uncheckedTextColor: string,
 ): TextStyle => ({
-  width: "80%",
   fontSize: 16,
   marginLeft: 16,
   fontWeight: "600",
@@ -73,6 +73,9 @@ export default StyleSheet.create<Style>({
   sortIconImageStyle: {
     width: 10,
     height: 30,
+  },
+  textContainer: {
+    width: "80%",
   },
   quantityTextStyle: {
     color: "#ccc",

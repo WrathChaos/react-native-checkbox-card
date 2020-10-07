@@ -9,7 +9,7 @@ type ThemeColorsType = {
 export const ThemeColors: ThemeColorsType = {
   light: {
     borderColor: "#797979",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#fff",
     checkedTextColor: "#8b8ca5",
     uncheckedTextColor: "#2b2b2c",
   },
