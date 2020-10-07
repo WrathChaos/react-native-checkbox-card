@@ -11,6 +11,7 @@ interface Style {
   container: ViewStyle;
   rightIconContainer: ViewStyle;
   sortIconImageStyle: ImageStyle;
+  quantityTextStyle: TextStyle;
 }
 
 export const _cardStyle = (
@@ -29,6 +30,19 @@ export const _cardStyle = (
   alignItems: "center",
 });
 
+export const _textStyle = (
+  checked: boolean,
+  checkedTextColor: string,
+  uncheckedTextColor: string,
+): TextStyle => ({
+  width: "80%",
+  fontSize: 16,
+  marginLeft: 16,
+  fontWeight: "600",
+  textDecorationLine: checked ? "line-through" : "none",
+  color: checked ? checkedTextColor : uncheckedTextColor,
+});
+
 export default StyleSheet.create<Style>({
   container: {
     width: ScreenWidth,
@@ -41,5 +55,9 @@ export default StyleSheet.create<Style>({
   sortIconImageStyle: {
     width: 10,
     height: 30,
+  },
+  quantityTextStyle: {
+    color: "#ccc",
+    marginLeft: 16,
   },
 });

@@ -4,7 +4,7 @@ import RNBounceable from "@freakycoder/react-native-bounceable";
 /**
  * ? Local Imports
  */
-import styles, { _cardStyle } from "./RNCheckboxCard.style";
+import styles, { _cardStyle, _textStyle } from "./RNCheckboxCard.style";
 import { ThemeColors, DARK, LIGHT } from "./theme";
 
 const { width: ScreenWidth } = Dimensions.get("window");
@@ -26,9 +26,12 @@ export interface ICheckboxCardProps {
   ImageComponent?: any;
   borderRadius?: number;
   backgroundColor?: string;
+  checkedTextColor?: string;
+  uncheckedTextColor?: string;
   disableQuantityText?: boolean;
   checkImageSource?: ISource;
   sortIconImageSource?: ISource;
+  quantityTextStyle?: any;
   rightIconComponent?: React.ReactElement;
   checkIconComponent?: React.ReactElement;
   onPress: (checked: boolean) => void;
@@ -100,27 +103,27 @@ export default class RNCheckboxCard extends Component<
   };
 
   renderTextContainer = () => {
-    const { text, quantity, disableQuantityText = true } = this.props;
     const { checked, theme } = this.state;
+    const {
+      text,
+      quantity,
+      quantityTextStyle,
+      checkedTextColor = ThemeColors[theme].checkedTextColor,
+      uncheckedTextColor = ThemeColors[theme].uncheckedTextColor,
+      disableQuantityText = true,
+    } = this.props;
     return (
       <View>
         <Text
           numberOfLines={2}
-          style={{
-            width: "80%",
-            fontSize: 16,
-            marginLeft: 16,
-            fontWeight: "600",
-            textDecorationLine: checked ? "line-through" : "none",
-            color: checked
-              ? ThemeColors[theme].checkedTextColor
-              : ThemeColors[theme].uncheckedTextColor,
-          }}
+          style={_textStyle(checked, checkedTextColor, uncheckedTextColor)}
         >
           {text}
         </Text>
         {!disableQuantityText && (
-          <Text style={{ color: "#ccc", marginLeft: 16 }}>{quantity}</Text>
+          <Text style={[styles.quantityTextStyle, quantityTextStyle]}>
+            {quantity}
+          </Text>
         )}
       </View>
     );
