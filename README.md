@@ -35,12 +35,13 @@
   </tr>
  <tr>
     <td align="center">
-      
-<img alt="React Native Checkbox Card"
-        src="assets/Screenshots/RN-Checkbox-Card-Light.gif" />
+      <img alt="React Native Checkbox Card"
+              src="assets/Screenshots/RN-Checkbox-Card-Light.gif" />
     </td>
    </tr>
 </table>
+
+
 # Installation
 
 Add the dependency:
