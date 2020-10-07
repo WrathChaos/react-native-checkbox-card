@@ -4,7 +4,11 @@ import RNBounceable from "@freakycoder/react-native-bounceable";
 /**
  * ? Local Imports
  */
-import styles, { _cardStyle, _textStyle } from "./RNCheckboxCard.style";
+import styles, {
+  _cardStyle,
+  _textStyle,
+  _circleCheckContainer,
+} from "./RNCheckboxCard.style";
 import { ThemeColors, DARK, LIGHT } from "./theme";
 
 const { width: ScreenWidth } = Dimensions.get("window");
@@ -23,12 +27,16 @@ export interface ICheckboxCardProps {
   quantity?: string;
   darkMode?: boolean;
   isChecked?: boolean;
+  circleSize?: number;
   ImageComponent?: any;
   borderRadius?: number;
   backgroundColor?: string;
   checkedTextColor?: string;
+  circleBorderColor?: string;
+  circleBorderRadius?: number;
   uncheckedTextColor?: string;
   disableQuantityText?: boolean;
+  circleBackgroundColor?: string;
   checkImageSource?: ISource;
   sortIconImageSource?: ISource;
   quantityTextStyle?: any;
@@ -76,7 +84,7 @@ export default class RNCheckboxCard extends Component<
         <ImageComponent
           resizeMode="contain"
           source={checkImageSource}
-          style={{ height: 15, width: 15 }}
+          style={styles.checkIconImageStyle}
         />
       )
     );
@@ -84,18 +92,21 @@ export default class RNCheckboxCard extends Component<
 
   renderCircleCheck = () => {
     const { theme, checked } = this.state;
+    const {
+      circleSize = 25,
+      circleBorderRadius = 25,
+      circleBackgroundColor = "#f9d749",
+      circleBorderColor = ThemeColors[theme].borderColor,
+    } = this.props;
     return (
       <View
-        style={{
-          height: 25,
-          width: 25,
-          borderWidth: 2,
-          borderRadius: 30,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: checked ? "#f9d749" : "transparent",
-          borderColor: checked ? "transparent" : ThemeColors[theme].borderColor,
-        }}
+        style={_circleCheckContainer(
+          checked,
+          circleSize,
+          circleBorderRadius,
+          circleBackgroundColor,
+          circleBorderColor,
+        )}
       >
         {checked && this.renderCheckIcon()}
       </View>
@@ -160,6 +171,7 @@ export default class RNCheckboxCard extends Component<
       <RNBounceable
         bounceEffect={0.97}
         bounceFriction={3}
+        {...this.props}
         style={styles.container}
         onPress={this.handleOnPress}
       >

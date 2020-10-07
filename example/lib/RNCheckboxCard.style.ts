@@ -12,6 +12,7 @@ interface Style {
   rightIconContainer: ViewStyle;
   sortIconImageStyle: ImageStyle;
   quantityTextStyle: TextStyle;
+  checkIconImageStyle: ImageStyle;
 }
 
 export const _cardStyle = (
@@ -43,6 +44,23 @@ export const _textStyle = (
   color: checked ? checkedTextColor : uncheckedTextColor,
 });
 
+export const _circleCheckContainer = (
+  checked: boolean,
+  circleSize: number,
+  circleBorderRadius: number,
+  circleBackgroundColor: string,
+  circleBorderColor: string,
+): ViewStyle => ({
+  width: circleSize,
+  height: circleSize,
+  borderRadius: circleBorderRadius,
+  borderColor: checked ? "transparent" : circleBorderColor,
+  backgroundColor: checked ? circleBackgroundColor : "transparent",
+  borderWidth: 2,
+  alignItems: "center",
+  justifyContent: "center",
+});
+
 export default StyleSheet.create<Style>({
   container: {
     width: ScreenWidth,
@@ -59,5 +77,9 @@ export default StyleSheet.create<Style>({
   quantityTextStyle: {
     color: "#ccc",
     marginLeft: 16,
+  },
+  checkIconImageStyle: {
+    width: 15,
+    height: 15,
   },
 });
