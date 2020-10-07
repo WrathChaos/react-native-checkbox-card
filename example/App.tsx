@@ -53,10 +53,10 @@ const App = () => {
     return (
       <View style={{ marginTop: 16 }}>
         <RNCheckboxCard
-          // darkMode
+          darkMode
           text={text}
-          // quantity={quantity}
-          // enableQuantityText
+          quantity={quantity}
+          enableQuantityText
           onPress={(checked: boolean) => console.log("Checked: ", checked)}
         />
       </View>
@@ -65,7 +65,7 @@ const App = () => {
 
   const renderHeader = () => (
     <View style={{ marginLeft: 24 }}>
-      <Text style={{ fontSize: 32, color: "#1b1b1b", fontWeight: "600" }}>
+      <Text style={{ fontSize: 32, color: "#fff", fontWeight: "600" }}>
         Shopping List
       </Text>
       <Text style={{ color: "#818181", fontSize: 16 }}>
@@ -81,7 +81,7 @@ const App = () => {
         style={{
           flex: 1,
           justifyContent: "center",
-          backgroundColor: "#edf0f1",
+          backgroundColor: "#19191a",
         }}
       >
         {renderHeader()}
