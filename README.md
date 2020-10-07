@@ -41,7 +41,6 @@
    </tr>
 </table>
 
-
 # Installation
 
 Add the dependency:
@@ -131,6 +130,10 @@ import RNCheckboxCard from "react-native-checkbox-card";
 
 - [x] ~~LICENSE~~
 - [ ] Write an article about the lib on Medium
+
+## Credits
+
+Heavily inspired by [Eugeniusz Eudokimow](https://dribbble.com/shots/11610076-Shopping-List-App/attachments/3231900?mode=media), thank you so much! :)
 
 ## Author
 
