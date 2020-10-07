@@ -133,12 +133,12 @@ export default class RNCheckboxCard extends Component<
       ImageComponent = Image,
     } = this.props;
     return (
-      <View style={{ marginLeft: "auto" }}>
+      <View style={styles.rightIconContainer}>
         {rightIconComponent || (
           <ImageComponent
             resizeMode="contain"
             source={sortIconImageSource}
-            style={{ height: 30, width: 10 }}
+            style={styles.sortIconImageStyle}
           />
         )}
       </View>

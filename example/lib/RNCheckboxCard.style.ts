@@ -9,6 +9,8 @@ const { width: ScreenWidth } = Dimensions.get("window");
 
 interface Style {
   container: ViewStyle;
+  rightIconContainer: ViewStyle;
+  sortIconImageStyle: ImageStyle;
 }
 
 export const _cardStyle = (
@@ -32,5 +34,12 @@ export default StyleSheet.create<Style>({
     width: ScreenWidth,
     alignItems: "center",
     justifyContent: "center",
+  },
+  rightIconContainer: {
+    marginLeft: "auto",
+  },
+  sortIconImageStyle: {
+    width: 10,
+    height: 30,
   },
 });
