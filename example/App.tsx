@@ -1,15 +1,14 @@
 import React from "react";
 import { FlatList, StatusBar, SafeAreaView } from "react-native";
 
-import RNCheckboxCard from "./lib/RNCheckboxCard";
-
+import RNCheckboxCard from "./build/dist/RNCheckboxCard";
 
 const staticData = [
   {
     id: 1,
     text: "Banana",
-  }
-]
+  },
+];
 
 const App = () => {
   const renderItem = (data: any) => {

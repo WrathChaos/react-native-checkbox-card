@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import * as React from "react";
 import { Image, Text, View, Dimensions } from "react-native";
 import RNBounceable from "@freakycoder/react-native-bounceable";
 /**
@@ -35,10 +35,11 @@ export interface ICheckboxCardProps {
   circleBorderColor?: string;
   circleBorderRadius?: number;
   uncheckedTextColor?: string;
-  disableQuantityText?: boolean;
+  enableQuantityText?: boolean;
   circleBackgroundColor?: string;
   checkImageSource?: ISource;
   sortIconImageSource?: ISource;
+  textStyle?: any;
   quantityTextStyle?: any;
   rightIconComponent?: React.ReactElement;
   checkIconComponent?: React.ReactElement;
@@ -50,7 +51,7 @@ interface IState {
   checked: boolean;
 }
 
-export default class RNCheckboxCard extends Component<
+export default class RNCheckboxCard extends React.Component<
   ICheckboxCardProps,
   IState
 > {
@@ -118,20 +119,24 @@ export default class RNCheckboxCard extends Component<
     const {
       text,
       quantity,
+      textStyle,
       quantityTextStyle,
       checkedTextColor = ThemeColors[theme].checkedTextColor,
       uncheckedTextColor = ThemeColors[theme].uncheckedTextColor,
-      disableQuantityText = true,
+      enableQuantityText = false,
     } = this.props;
     return (
       <View>
         <Text
           numberOfLines={2}
-          style={_textStyle(checked, checkedTextColor, uncheckedTextColor)}
+          style={[
+            _textStyle(checked, checkedTextColor, uncheckedTextColor),
+            textStyle,
+          ]}
         >
           {text}
         </Text>
-        {!disableQuantityText && (
+        {enableQuantityText && (
           <Text style={[styles.quantityTextStyle, quantityTextStyle]}>
             {quantity}
           </Text>
