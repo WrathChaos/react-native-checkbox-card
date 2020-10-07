@@ -4,7 +4,7 @@ import RNBounceable from "@freakycoder/react-native-bounceable";
 /**
  * ? Local Imports
  */
-import styles from "./RNCheckboxCard.style.ts";
+import styles, { _cardStyle } from "./RNCheckboxCard.style";
 import { ThemeColors, DARK, LIGHT } from "./theme";
 
 const { width: ScreenWidth } = Dimensions.get("window");
@@ -17,9 +17,16 @@ export interface ISource {
 }
 
 export interface ICheckboxCardProps {
-  isChecked?: boolean;
+  text: string;
+  width?: number;
+  height?: number;
+  quantity?: string;
   darkMode?: boolean;
+  isChecked?: boolean;
   ImageComponent?: any;
+  borderRadius?: number;
+  backgroundColor?: string;
+  disableQuantityText?: boolean;
   checkImageSource?: ISource;
   sortIconImageSource?: ISource;
   rightIconComponent?: React.ReactElement;
@@ -73,7 +80,7 @@ export default class RNCheckboxCard extends Component<
   };
 
   renderCircleCheck = () => {
-    const { checked } = this.state;
+    const { theme, checked } = this.state;
     return (
       <View
         style={{
@@ -84,7 +91,7 @@ export default class RNCheckboxCard extends Component<
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: checked ? "#f9d749" : "transparent",
-          borderColor: checked ? "transparent" : "#e5e5e5",
+          borderColor: checked ? "transparent" : ThemeColors[theme].borderColor,
         }}
       >
         {checked && this.renderCheckIcon()}
@@ -93,19 +100,29 @@ export default class RNCheckboxCard extends Component<
   };
 
   renderTextContainer = () => {
-    const { checked } = this.state;
+    const { text, quantity, disableQuantityText = true } = this.props;
+    const { checked, theme } = this.state;
     return (
-      <Text
-        style={{
-          fontSize: 16,
-          marginLeft: 16,
-          fontWeight: "600",
-          color: checked ? "#797979" : "#e5e5e5",
-          textDecorationLine: checked ? "line-through" : "none",
-        }}
-      >
-        Brown rice
-      </Text>
+      <View>
+        <Text
+          numberOfLines={2}
+          style={{
+            width: "80%",
+            fontSize: 16,
+            marginLeft: 16,
+            fontWeight: "600",
+            textDecorationLine: checked ? "line-through" : "none",
+            color: checked
+              ? ThemeColors[theme].checkedTextColor
+              : ThemeColors[theme].uncheckedTextColor,
+          }}
+        >
+          {text}
+        </Text>
+        {!disableQuantityText && (
+          <Text style={{ color: "#ccc", marginLeft: 16 }}>{quantity}</Text>
+        )}
+      </View>
     );
   };
 
@@ -129,26 +146,25 @@ export default class RNCheckboxCard extends Component<
   };
 
   render() {
-    const { onPress } = this.props;
+    const { theme } = this.state;
+    const {
+      height = 60,
+      borderRadius = 10,
+      width = ScreenWidth * 0.9,
+      backgroundColor = ThemeColors[theme].backgroundColor,
+    } = this.props;
     return (
       <RNBounceable
         bounceEffect={0.97}
         bounceFriction={3}
-        style={{
-          height: 55,
-          paddingLeft: 16,
-          paddingRight: 16,
-          borderRadius: 10,
-          flexDirection: "row",
-          alignItems: "center",
-          width: ScreenWidth * 0.9,
-          backgroundColor: "#2b2b2c",
-        }}
+        style={styles.container}
         onPress={this.handleOnPress}
       >
-        {this.renderCircleCheck()}
-        {this.renderTextContainer()}
-        {this.renderSortButton()}
+        <View style={_cardStyle(height, width, borderRadius, backgroundColor)}>
+          {this.renderCircleCheck()}
+          {this.renderTextContainer()}
+          {this.renderSortButton()}
+        </View>
       </RNBounceable>
     );
   }

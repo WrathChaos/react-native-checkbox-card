@@ -1,27 +1,23 @@
 type ThemeColorsType = {
   [key: string]: {
-    menuBarBackgroundColor: string;
-    menuButtonBackgroundColor: string;
-    menuItemTextColor: string;
-    textColor: string;
-    placeholderColor: string;
+    borderColor: string;
+    backgroundColor: string;
+    checkedTextColor: string;
+    uncheckedTextColor: string;
   };
 };
-
 export const ThemeColors: ThemeColorsType = {
   light: {
-    menuBarBackgroundColor: "#fff",
-    menuButtonBackgroundColor: "#fff",
-    menuItemTextColor: "#a9aeb9",
-    textColor: "#8b8ca5",
-    placeholderColor: "#8b8ca5",
+    borderColor: "#797979",
+    backgroundColor: "#e5e5e5",
+    checkedTextColor: "#8b8ca5",
+    uncheckedTextColor: "#2b2b2c",
   },
   dark: {
-    menuBarBackgroundColor: "#171920",
-    menuButtonBackgroundColor: "#2b2c32",
-    menuItemTextColor: "#52555b",
-    textColor: "#fff",
-    placeholderColor: "#ccc",
+    borderColor: "#e5e5e5",
+    backgroundColor: "#2b2b2c",
+    checkedTextColor: "#797979",
+    uncheckedTextColor: "#e5e5e5",
   },
 };
 

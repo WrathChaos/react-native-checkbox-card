@@ -1,16 +1,29 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from "react-native";
+import { FlatList, StatusBar, SafeAreaView } from "react-native";
 
 import RNCheckboxCard from "./lib/RNCheckboxCard";
 
+
+const staticData = [
+  {
+    id: 1,
+    text: "Banana",
+  }
+]
+
 const App = () => {
+  const renderItem = (data: any) => {
+    const { text, id } = data.item;
+
+    return (
+      <RNCheckboxCard
+        darkMode
+        text={text}
+        onPress={(checked: boolean) => console.log("Checked: ", checked)}
+      />
+    );
+  };
+
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -22,9 +35,7 @@ const App = () => {
           backgroundColor: "#19191a",
         }}
       >
-        <RNCheckboxCard
-          onPress={(checked: boolean) => console.log("Checked: ", checked)}
-        />
+        <FlatList data={staticData} renderItem={renderItem} />
       </SafeAreaView>
     </>
   );
