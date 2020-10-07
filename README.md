@@ -8,15 +8,39 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier)
 
-<p align="center">
-  <img alt="React Native Checkbox Card"
+<table>
+  <tr>
+    <td>
+      <b>Checkbox Card</b>
+    </td>
+    <td>
+      <b>Checkbox Card with Quantity Feature</b>
+    </td>
+  </tr>
+ <tr>
+    <td align="center"> 
+       <img alt="React Native Checkbox Card"
         src="assets/Screenshots/RN-Checkbox-Card.gif" />
-  <img alt="React Native Checkbox Card"
+    </td>
+    <td align="center">
+       <img alt="React Native Checkbox Card"
         src="assets/Screenshots/RN-Checkbox-Card-2.gif" />
-  <img alt="React Native Checkbox Card"
-        src="assets/Screenshots/RN-Checkbox-Card-Light.gif" />
-</p>
+    </td>
+   </tr>
 
+  <tr>
+    <td>
+      <b>Checkbox Card Light Mode</b>
+    </td>
+  </tr>
+ <tr>
+    <td align="center">
+      
+<img alt="React Native Checkbox Card"
+        src="assets/Screenshots/RN-Checkbox-Card-Light.gif" />
+    </td>
+   </tr>
+</table>
 # Installation
 
 Add the dependency:
