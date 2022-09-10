@@ -43,6 +43,7 @@ export interface ICheckboxCardProps {
   quantityTextStyle?: any;
   rightIconComponent?: React.ReactElement;
   checkIconComponent?: React.ReactElement;
+  disableSortIcon?: boolean;
   onPress: (checked: boolean) => void;
 }
 
@@ -150,16 +151,18 @@ export default class RNCheckboxCard extends React.Component<
       rightIconComponent,
       sortIconImageSource = defaultSortIcon,
       ImageComponent = Image,
+      disableSortIcon = false,
     } = this.props;
     return (
       <View style={styles.rightIconContainer}>
-        {rightIconComponent || (
-          <ImageComponent
-            resizeMode="contain"
-            source={sortIconImageSource}
-            style={styles.sortIconImageStyle}
-          />
-        )}
+        {rightIconComponent ||
+          (!disableSortIcon && (
+            <ImageComponent
+              resizeMode="contain"
+              source={sortIconImageSource}
+              style={styles.sortIconImageStyle}
+            />
+          ))}
       </View>
     );
   };
