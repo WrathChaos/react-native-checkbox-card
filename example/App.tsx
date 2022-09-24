@@ -57,7 +57,7 @@ const App = () => {
           text={text}
           quantity={quantity}
           enableQuantityText
-          rightIconComponent={() => null}
+          rightIconComponent={<View />}
           onPress={(checked: boolean) => console.log("Checked: ", checked)}
         />
       </View>
