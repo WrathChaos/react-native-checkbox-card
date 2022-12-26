@@ -1,6 +1,6 @@
-import * as React from "react";
-import { Image, Text, View, Dimensions } from "react-native";
-import RNBounceable from "@freakycoder/react-native-bounceable";
+import * as React from 'react';
+import {Image, Text, View, Dimensions} from 'react-native';
+import RNBounceable from '@freakycoder/react-native-bounceable';
 /**
  * ? Local Imports
  */
@@ -8,16 +8,16 @@ import styles, {
   _cardStyle,
   _textStyle,
   _circleCheckContainer,
-} from "./RNCheckboxCard.style";
-import { ThemeColors, DARK, LIGHT } from "./theme";
+} from './RNCheckboxCard.style';
+import {ThemeColors, DARK, LIGHT} from './theme';
 
-const { width: ScreenWidth } = Dimensions.get("window");
+const {width: ScreenWidth} = Dimensions.get('window');
 
-const defaultCheckIcon = require("./local-assets/check-icon-dark.png");
-const defaultSortIcon = require("./local-assets/sort-icon.png");
+const defaultCheckIcon = require('./local-assets/check-icon-dark.png');
+const defaultSortIcon = require('./local-assets/sort-icon.png');
 
 export interface ISource {
-  source: string | { uri: string };
+  source: string | {uri: string};
 }
 
 export interface ICheckboxCardProps {
@@ -64,7 +64,7 @@ export default class RNCheckboxCard extends React.Component<
   }
 
   handleOnPress = () => {
-    this.setState({ checked: !this.state.checked }, () => {
+    this.setState({checked: !this.state.checked}, () => {
       // ? Outside onPress Callback
       this.props.onPress && this.props.onPress(this.state.checked);
     });
@@ -92,11 +92,11 @@ export default class RNCheckboxCard extends React.Component<
   };
 
   renderCircleCheck = () => {
-    const { theme, checked } = this.state;
+    const {theme, checked} = this.state;
     const {
       circleSize = 25,
       circleBorderRadius = 25,
-      circleBackgroundColor = "#f9d749",
+      circleBackgroundColor = '#f9d749',
       circleBorderColor = ThemeColors[theme].borderColor,
     } = this.props;
     return (
@@ -107,15 +107,14 @@ export default class RNCheckboxCard extends React.Component<
           circleBorderRadius,
           circleBackgroundColor,
           circleBorderColor,
-        )}
-      >
+        )}>
         {checked && this.renderCheckIcon()}
       </View>
     );
   };
 
   renderTextContainer = () => {
-    const { checked, theme } = this.state;
+    const {checked, theme} = this.state;
     const {
       text,
       quantity,
@@ -132,8 +131,7 @@ export default class RNCheckboxCard extends React.Component<
           style={[
             _textStyle(checked, checkedTextColor, uncheckedTextColor),
             textStyle,
-          ]}
-        >
+          ]}>
           {text}
         </Text>
         {enableQuantityText && (
@@ -165,7 +163,7 @@ export default class RNCheckboxCard extends React.Component<
   };
 
   render() {
-    const { theme } = this.state;
+    const {theme} = this.state;
     const {
       height = 60,
       borderRadius = 10,
@@ -178,8 +176,7 @@ export default class RNCheckboxCard extends React.Component<
         bouncinessIn={3}
         {...this.props}
         style={styles.container}
-        onPress={this.handleOnPress}
-      >
+        onPress={this.handleOnPress}>
         <View style={_cardStyle(height, width, borderRadius, backgroundColor)}>
           {this.renderCircleCheck()}
           {this.renderTextContainer()}
