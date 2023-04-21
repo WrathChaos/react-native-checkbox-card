@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, Text, View, Dimensions } from "react-native";
+import { Image, Text, View, Dimensions, PressableProps } from "react-native";
 import RNBounceable from "@freakycoder/react-native-bounceable";
 /**
  * ? Local Imports
@@ -20,7 +20,7 @@ export interface ISource {
   source: string | { uri: string };
 }
 
-export interface ICheckboxCardProps {
+export interface ICheckboxCardProps extends Omit<PressableProps, "onPress"> {
   text: string;
   width?: number;
   height?: number;
