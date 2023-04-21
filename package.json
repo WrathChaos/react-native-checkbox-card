@@ -1,6 +1,6 @@
 {
   "name": "react-native-checkbox-card",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Checkbox Card is customizable and animated built-in check state integration for React Native",
   "main": "./build/dist/RNCheckboxCard.js",
   "repository": "git@github.com:WrathChaos/react-native-checkbox-card.git",
